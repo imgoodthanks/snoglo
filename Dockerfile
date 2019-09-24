@@ -25,8 +25,8 @@ RUN apt-get update \
     && apt-get install -y libx11-dev libxkbfile-dev \
 
     # CUSTOM // build tools
-    && apt-get install build-essential git wget libssl-dev libreadline-dev libncurses5-dev zlib1g-dev m4 curl wx-common libwxgtk3.0-dev autoconf \
-    && apt-get install libxml2-utils xsltproc fop unixodbc unixodbc-bin unixodbc-dev \
+    && apt-get install -y build-essential git wget libssl-dev libreadline-dev libncurses5-dev zlib1g-dev m4 curl wx-common libwxgtk3.0-dev autoconf \
+    && apt-get install -y libxml2-utils xsltproc fop unixodbc unixodbc-bin unixodbc-dev \
 
     && apt-get clean && rm -rf /var/cache/apt/* && rm -rf /var/lib/apt/lists/* && rm -rf /tmp/*
 
@@ -46,7 +46,7 @@ RUN cd \
     && echo '. $HOME/.asdf/completions/asdf.bash' >> ~/.bashrc \
 
     # CUSTOM // install erlang/elixir
-RUN bash \
+RUN bash && cd \
     && asdf plugin-add erlang \
     && asdf install erlang $ERLANG_VERSION \
     && asdf global erlang $ERLANG_VERSION \
