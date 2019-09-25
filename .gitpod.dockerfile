@@ -46,7 +46,7 @@ RUN cd \
     && echo '. $HOME/.asdf/completions/asdf.bash' >> ~/.bashrc \
 
     # CUSTOM // install erlang/elixir
-RUN cd \
+RUN bash && cd \
     && asdf plugin-add erlang \
     && asdf install erlang $ERLANG_VERSION \
     && asdf global erlang $ERLANG_VERSION \
