@@ -17,25 +17,26 @@ ENV REFRESHED_AT=2019-07-12 \
 # Install custom tools, runtime, etc.
 RUN apt-get update \
     # window manager
-    && apt-get install -y jwm \
+    # && apt-get install -y jwm \
     # electron
     && apt-get install -y libgtk-3-0 libnss3 libasound2 \
     # native-keymap
     && apt-get install -y libx11-dev libxkbfile-dev \
 
     # CUSTOM // build tools
-    && apt-get install -y build-essential git wget libssl-dev libreadline-dev libncurses5-dev zlib1g-dev m4 curl wx-common libwxgtk3.0-dev autoconf \
-    && apt-get install -y libxml2-utils xsltproc fop unixodbc unixodbc-bin unixodbc-dev \
+    # disabled: wx-common libwxgtk3.0-dev unixodbc unixodbc-bin unixodbc-dev
+    && apt-get install -y build-essential git wget libssl-dev libreadline-dev libncurses5-dev zlib1g-dev m4 curl autoconf \
+    && apt-get install -y libxml2-utils xsltproc fop \
 
     && apt-get clean && rm -rf /var/cache/apt/* && rm -rf /var/lib/apt/lists/* && rm -rf /tmp/*
 
 USER gitpod
 
 # Apply user-specific settings
-RUN bash -c ". .nvm/nvm.sh \
-    && nvm install 10 \
-    && nvm use 10 \
-    && npm install -g yarn"
+#RUN bash -c ". .nvm/nvm.sh \
+#    && nvm install 10 \
+#    && nvm use 10 \
+#    && npm install -g yarn"
 
 # CUSTOM // asdf-vm install
 RUN cd \
@@ -45,7 +46,7 @@ RUN cd \
     && echo '. $HOME/.asdf/completions/asdf.bash' >> ~/.bashrc \
 
     # CUSTOM // install erlang/elixir
-RUN bash && cd \
+RUN cd \
     && asdf plugin-add erlang \
     && asdf install erlang $ERLANG_VERSION \
     && asdf global erlang $ERLANG_VERSION \
