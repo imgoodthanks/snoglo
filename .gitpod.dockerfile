@@ -11,7 +11,7 @@ USER root
 ENV REFRESHED_AT=2019-07-12 \
     LANG=en_US.UTF-8 \
     TERM=xterm \
-    ERLANG_VERSION=22.1.0 \
+    ERLANG_VERSION=22.1 \
     ELIXIR_VERSION=1.9.1-otp-22
 
 # Install custom tools, runtime, etc.
