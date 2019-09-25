@@ -43,16 +43,18 @@ RUN cd \
     && git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.4 \
     # For Ubuntu or other linux distros
     && echo '. $HOME/.asdf/asdf.sh' >> ~/.bashrc \
-    && echo '. $HOME/.asdf/completions/asdf.bash' >> ~/.bashrc \
+    && echo '. $HOME/.asdf/completions/asdf.bash' >> ~/.bashrc
 
     # CUSTOM // install erlang/elixir
 RUN cd \
     && ~/.asdf/bin/asdf plugin-add erlang \
     && ~/.asdf/bin/asdf install erlang $ERLANG_VERSION \
-    && ~/.asdf/bin/asdf global erlang $ERLANG_VERSION \
+    && ~/.asdf/bin/asdf global erlang $ERLANG_VERSION
+    
+RUN cd \
     && ~/.asdf/bin/asdf plugin-add elixir \
     && ~/.asdf/bin/asdf install elixir $ELIXIR_VERSION \
-    && ~/.asdf/bin/ global elixir $ELIXIR_VERSION
+    && ~/.asdf/bin/asdf global elixir $ELIXIR_VERSION
 
 RUN echo "install" >> ~/install
 
