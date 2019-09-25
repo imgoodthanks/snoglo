@@ -46,13 +46,13 @@ RUN cd \
     && echo '. $HOME/.asdf/completions/asdf.bash' >> ~/.bashrc \
 
     # CUSTOM // install erlang/elixir
-RUN bash && cd \
-    && asdf plugin-add erlang \
-    && asdf install erlang $ERLANG_VERSION \
-    && asdf global erlang $ERLANG_VERSION \
-    && asdf plugin-add elixir \
-    && asdf install elixir $ELIXIR_VERSION \
-    && asdf global elixir $ELIXIR_VERSION
+RUN cd \
+    && ~/.asdf/bin/asdf plugin-add erlang \
+    && ~/.asdf/bin/asdf install erlang $ERLANG_VERSION \
+    && ~/.asdf/bin/asdf global erlang $ERLANG_VERSION \
+    && ~/.asdf/bin/asdf plugin-add elixir \
+    && ~/.asdf/bin/asdf install elixir $ELIXIR_VERSION \
+    && ~/.asdf/bin/ global elixir $ELIXIR_VERSION
 
 RUN echo "install" >> ~/install
 
